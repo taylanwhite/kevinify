@@ -21,8 +21,16 @@
     "abbreviation",
     "text"
   ],
-  "author": "you",
+  "author": "tawsdev <taylanwhite@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylanwhite/kevinify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/taylanwhite/kevinify/issues"
+  },
+  "homepage": "https://github.com/taylanwhite/kevinify#readme",
   "devDependencies": {
     "@types/node": "^24.10.0",
     "typescript": "^5.3.0"
