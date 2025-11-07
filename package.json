@@ -1,12 +1,12 @@
 {
   "name": "kevinify",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Reduce tokens by turning many word into few word.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "kevinify": "dist/bin/kevinify.js"
+    "kevinify": "dist/cli.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

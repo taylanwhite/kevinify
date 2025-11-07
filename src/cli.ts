@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { kevinify } from "../src/index.js";
+import { kevinify } from "./index.js";
 
 const args = process.argv.slice(2);
 const flags = new Set(args.filter(a => a.startsWith("--")));

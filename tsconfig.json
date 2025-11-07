@@ -5,11 +5,11 @@
     "moduleResolution": "Bundler",
     "declaration": true,
     "outDir": "dist",
-    "rootDir": ".",
+    "rootDir": "src",
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "bin/**/*.ts"]
+  "include": ["src/**/*.ts"]
 }
 
 

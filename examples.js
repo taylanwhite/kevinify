@@ -1,4 +1,4 @@
-import { kevinify } from "./dist/src/index.js";
+import { kevinify } from "./dist/index.js";
 
 console.log("=== Kevinify Examples ===\n");
 
