@@ -17,11 +17,15 @@ npm i -D kevinify
 ### As a library
 
 ```typescript
-import { kevinify } from "kevinify";
+import { kevinify, dekevinify } from "kevinify";
 
 const input = "Please send me the documentation about the new API features.";
-const output = kevinify(input);
-// => "pls snd me docs abt new api ftrs"
+const compressed = kevinify(input);
+// => "pls send me docs abt new api ftrs"
+
+// Expand back to human-readable form
+const expanded = dekevinify(compressed);
+// => "please send me documentation about new api ftrs"
 
 // With options
 const output2 = kevinify(input, {
@@ -57,10 +61,11 @@ kevinify --no-shorten "Please send information"
 
 ## Features
 
-- **Abbreviations**: Common words → short forms (`please` → `pls`, `people` → `ppl`)
+- **Abbreviations**: Common words → short forms (`please` → `pls`, `people` → `ppl`, `for` → `4`)
 - **Stopword removal**: Drops filler words like `the`, `a`, `just`, `really`
 - **Vowel compression**: Long words → consonant-heavy (`information` → `informatn`)
 - **Smart preservation**: URLs, emails, @mentions, #hashtags, and numbers stay intact
+- **Reversible**: `dekevinify()` expands abbreviations back for human readability
 - **Configurable**: Control every aspect via options
 
 ## Options
@@ -83,17 +88,49 @@ interface KevinifyOptions {
 ```typescript
 // Basic compression
 kevinify("Why use many words when few words do the trick?")
-// => "why use mny wrds whn fw wrds do trck"
+// => "why use many words when few words do trick"
 
 // Preserving entities
 kevinify("Check out https://example.com and email me@example.com")
-// => "chck out https://example.com & eml me@example.com"
+// => "check out https://example.com & email me@example.com"
 
 // Custom abbreviations
 kevinify("Hello world", {
   abbreviations: { hello: "hi", world: "wrld" }
 })
 // => "hi wrld"
+
+// Expand kevinified text back
+dekevinify("pls send me docs 4 api")
+// => "please send me documentation for api"
+
+dekevinify("ty 4 info abt app")
+// => "thank you for information about application"
+```
+
+## Dekevinify
+
+The `dekevinify()` function reverses the compression to make text more human-readable:
+
+```typescript
+import { dekevinify } from "kevinify";
+
+// Expands abbreviations back
+const text = "pls send me docs abt api w/ examples b4 prod";
+console.log(dekevinify(text));
+// => "please send me documentation about api with examples before production"
+```
+
+**Note:** Dekevinify is lossy - it can't restore:
+- Removed stopwords (`a`, `the`, `just`, etc.)
+- Stripped vowels from long words
+- But it WILL expand all common abbreviations!
+
+```typescript
+interface DekevinifyOptions {
+  abbreviations?: Record<string, string>;  // Custom reverse abbreviations
+  preserveEntities?: boolean;              // Protect URLs/emails/@/# (default: true)
+}
 ```
 
 ## Why?

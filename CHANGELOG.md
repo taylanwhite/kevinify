@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2025-11-07
+
+### Added
+- **`dekevinify()` function**: Reverse kevinification to expand abbreviations back to human-readable text
+- Expands all common abbreviations: `pls` → `please`, `4` → `for`, `&` → `and`, `w/` → `with`, etc.
+- Smart handling of single-digit numbers vs. abbreviations (expands `4`/`2` but preserves multi-digit numbers like `100`)
+- Full TypeScript support for `DekevinifyOptions` interface
+- Preserves URLs, emails, @mentions, and #hashtags when dekevinifying
+
+### Changed
+- Updated README with `dekevinify` usage examples and documentation
+
 ## [0.1.1] - 2025-11-07
 
 ### Fixed

@@ -5,6 +5,9 @@ import {
 } from "./rules.js";
 import { findProtectedSpans, splitBySpans } from "./utils.js";
 
+// Re-export dekevinify
+export { dekevinify, type DekevinifyOptions } from "./dekevinify.js";
+
 export interface KevinifyOptions {
   abbreviations?: Record<string, string>;
   removeStopwords?: boolean;        // default true
